@@ -1,25 +1,25 @@
-import { useState } from 'react'
-import './App.css'
+import { Profile } from "../Profile/Profile";
+import { FriendList } from "../FriendList/FriendList";
+import {TransactionHistory} from "../TransactionHistory/TransactionHistory";
+import userData from "../../userData";
+import friends from "../../friends.json";
+import transactions from "../../transactions .json";
 
-function App() {
-  const [count, setCount] = useState(0)
 
+
+const App = () => {
   return (
     <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Profile
+        name={userData.username}
+        tag={userData.tag}
+        location={userData.location}
+        image={userData.avatar}
+        stats={userData.stats}
+      />
+      <FriendList friends={friends} />
+      <TransactionHistory items={transactions} />
     </>
-  )
-}
-
-export default App
+  );
+};
+export default App;
